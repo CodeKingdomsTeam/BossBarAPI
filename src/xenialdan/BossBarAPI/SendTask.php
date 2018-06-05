@@ -3,16 +3,16 @@
 namespace xenialdan\BossBarAPI;
 
 use pocketmine\plugin\Plugin;
-use pocketmine\scheduler\PluginTask;
+use pocketmine\scheduler\Task;
 
-class SendTask extends PluginTask{
+class SendTask extends Task{
 
 	public function __construct(Plugin $owner){
-		parent::__construct($owner);
+		$this->owner = $owner;
 	}
 
 	public function onRun(int $currentTick){
-		$this->getOwner()->sendBossBar();
+		$this->owner->sendBossBar();
 	}
 
 	public function cancel(){
